@@ -32,7 +32,19 @@ void Keyboard::keyPress(int key, int modifiers)
     //XK_BackSpace
     QByteArray display_name = qgetenv("DISPLAY");
     Display *display = XOpenDisplay(display_name.constData());
-    XTestFakeKeyEvent(display, XKeysymToKeycode(display, key), 1, 0);
+
+    auto key_code = XKeysymToKeycode(display, key);
+
+    bool needs_remap = key_code == 0;
+
+    if( needs_remap )
+    {
+        qDebug("KEYSYM %s IS NOT MAPPED ON KEYBOARD", key);
+        return;
+    }
+
+    XTestFakeKeyEvent(display, key_code, 1, 0);
+
     XFlush(display);
     XCloseDisplay(display);
 }
