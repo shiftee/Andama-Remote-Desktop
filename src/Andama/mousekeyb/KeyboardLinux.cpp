@@ -29,7 +29,6 @@
 
 void Keyboard::keyPress(int key, int modifiers)
 {
-    //XK_BackSpace
     QByteArray display_name = qgetenv("DISPLAY");
     Display *display = XOpenDisplay(display_name.constData());
 
@@ -302,25 +301,25 @@ int Keyboard::convertPortableKeyToLocal(portableVKey portableKey)
         return XK_KP_Subtract;
 
     case portableVKey::PVK_NUMPAD0:
-        return XK_KP_0;
+        return XK_0;
     case portableVKey::PVK_NUMPAD1:
-        return XK_KP_1;
+        return XK_1;
     case portableVKey::PVK_NUMPAD2:
-        return XK_KP_2;
+        return XK_2;
     case portableVKey::PVK_NUMPAD3:
-        return XK_KP_3;
+        return XK_3;
     case portableVKey::PVK_NUMPAD4:
-        return XK_KP_4;
+        return XK_4;
     case portableVKey::PVK_NUMPAD5:
-        return XK_KP_5;
+        return XK_5;
     case portableVKey::PVK_NUMPAD6:
-        return XK_KP_6;
+        return XK_6;
     case portableVKey::PVK_NUMPAD7:
-        return XK_KP_7;
+        return XK_7;
     case portableVKey::PVK_NUMPAD8:
-        return XK_KP_8;
+        return XK_8;
     case portableVKey::PVK_NUMPAD9:
-        return XK_KP_9;
+        return XK_9;
 
     case portableVKey::PVK_RETURN:
         return XK_Return;
