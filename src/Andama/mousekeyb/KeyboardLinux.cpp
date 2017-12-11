@@ -34,11 +34,9 @@ void Keyboard::keyPress(int key, int modifiers)
 
     auto key_code = XKeysymToKeycode(display, key);
 
-    bool needs_remap = key_code == 0;
-
-    if( needs_remap )
+    if( key_code == 0 )
     {
-        qDebug("KEYSYM %s IS NOT MAPPED ON KEYBOARD", key);
+        qDebug("KEYSYM 0x%X IS NOT MAPPED ON KEYBOARD", key);
         return;
     }
 
